@@ -1,24 +1,38 @@
-# README
+# Climber
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+自分が使用している登山用品の投稿をして紹介し合うSNSのサイトです。
 
-Things you may want to cover:
+### サイトテーマ
+お気に入りの登山用品を身につけて山へ行こう！
 
-* Ruby version
+### テーマを選んだ理由
+私は登山が好きなのですが、登山用品は種類が豊富で、どれにしようか迷ってしまいます。けど、高値な商品が多く、あれもこれも購入して試すわけにはいかないです。
+そんな時に、実際に使用している人の情報が簡単に見れるサイトがあると嬉しいなと思い、今回の題材にしました。
 
-* System dependencies
+### ターゲットユーザ
+登山初心者～登山愛好家まで
 
-* Configuration
+### 主な利用シーン
+・どんなものを買ったらいいかわからない時や、新しい商品の購入を検討してるときの参考に！
+・マイページでは自分の投稿した商品が閲覧できるので「持ち物コレクション」として利用したり、他の人のお気に入り保存した商品を閲覧できます
 
-* Database creation
+## 設計書
+ER図
+<img width="70%" alt="ER図" src="https://user-images.githubusercontent.com/81353374/120570434-1941bb80-c453-11eb-8b78-2218de8b3edf.png">
 
-* Database initialization
 
-* How to run the test suite
+詳細設計書（作成途中）
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1sPBm6p_3XGsEttP31yN92hQjXXCduvIC0XAGcxdSUg8/edit#gid=0
 
-* ...
+## 開発環境
+- 言語：HTML,CSS,JavaScript,Ruby,MySQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+- 未決定です。（外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。）
