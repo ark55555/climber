@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10  mx-2 text-center shadow px-0 my-5">
+      <h4 class="text-dark bg-light py-3">新規登録</h4>
+
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td><%= f.label :"ユーザー名" %></td>
+              <td><%= f.text_field :name, autofocus: true %></td>
+            </tr>
+
+            <tr>
+              <td><%= f.label :"メールアドレス" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+
+            <tr>
+              <td>
+                <%= f.label :"パスワード" %>
+                  <% if @minimum_password_length %>
+                  (<%= @minimum_password_length %> 文字以上)
+                  <% end %>
+              </td>
+              <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            </tr>
+
+            <tr>
+              <td><%= f.label :"パスワード(確認用)" %></td>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="actions">
+          <%= f.submit "新規登録", class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
+
+      <div class="badge badge-light my-3 py-2">
+        <h6>既に登録済みの方</h6>
+        <%= render "devise/shared/links" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10  mx-2 text-center shadow px-0 my-5">
+      <h4 class="text-dark bg-light py-3">ログイン</h4>
+
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= f.label :"メールアドレス" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :"パスワード" %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: "btn btn-primary btn-sm" %>
+      </div>
+      <% end %>
+
+      <div class="badge badge-light  my-3 py-2">
+        <h6>登録がお済みでない方</h6>
+        <%= render "devise/shared/links" %>
+      </div>
+
+    </div>
+  </div>
+</div>

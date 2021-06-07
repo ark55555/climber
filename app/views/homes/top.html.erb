@@ -1,0 +1,25 @@
+ <div class="container-fluid top-bg">
+   <div class="row">
+     <div class="col-12 top-box">
+        <h1 class="top-title">ようこそ、<strong>Climber</strong>へ！</h1>
+     </div>
+   </div>
+ </div>
+ <div class="col my-3 text-center">
+  <%= link_to "新規登録", new_user_registration_path, class: 'fas fa-user-plus btn btn-secondary' %>
+  <%= link_to "ログイン", new_user_session_path, class: 'fas fa-sign-in-alt btn btn-secondary' %>
+  <%= link_to "ゲストログイン(閲覧用)", users_guest_path, method: :post, class: 'fas fa-sign-in-alt btn btn-warning' %>
+ </div>
+ <div class="container">
+   <div class="row">
+     <div class="col-md-6 text-center shadow-sm px-0 my-5">
+       <h4 class="text-dark bg-light py-3">このサイトについて</h4>
+       <p>
+         自分が使用している登山用品を投稿して紹介し合うSNSのサイトです。<br>
+         「登山靴」を買いたいけど、どんなのがいいかしら？」<br>
+         「あの商品気になってるけど使い勝手はどうだろう？」<br>
+         そんなときにこのサイトを活用ください！<br>
+       </p>
+     </div>
+   </div>
+ </div>
