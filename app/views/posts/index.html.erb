@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h4 class="text-dark bg-light text-center">投稿一覧ページ</h4>
+        <div class="card-columns">
+          <div class="card w shadow">
+          <% @posts.each do |post| %>
+            <%= link_to post_path(post.id) do %>
+              <%= attachment_image_tag post, :image, class: "card-img-top h-50"%>
+            <% end %>
+            <div class="card-body">
+              <h6 class="card-title"><%= post.goods_name %></h6>
+              <!--<p class="card-text">タグ</p>-->
+            </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
