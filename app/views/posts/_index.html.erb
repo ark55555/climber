@@ -1,0 +1,16 @@
+ <!--<div class="d-flex flex-wrap">-->
+    <div class="card-columns my-2">
+      <% posts.each do |post| %>
+      <div class="card w-50 h-100 shadow">
+        <%= link_to post_path(post.id) do %>
+          <%= attachment_image_tag post, :image, class: "card-img-top h-50"%>
+        <% end %>
+        <div class="card-body">
+          <h6 class="card-title"><%= post.goods_name %></h6>
+          <!--<p class="card-text">タグ</p>-->
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <!--</div>-->
+<%= paginate posts %>

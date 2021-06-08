@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(8)
+    @posts = Post.all.page(params[:page]).per(6)
   end
 
   def show

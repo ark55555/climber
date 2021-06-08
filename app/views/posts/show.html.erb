@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-1">
+      <h5 class="text-dark bg-light text-center"><%= @post.goods_name %></h5>
+      <div class="card shadow h-100">
+        <%= attachment_image_tag @post, :image, class: "card-img-top h-50"%>
+        <div class="card-body">
+          <p class="card-text"><%= @post.caption%></p>
+          <% if @post.user == current_user %>
+            <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-secondary mr-2" %>
+            <%= link_to '削除', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
