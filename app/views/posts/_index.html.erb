@@ -7,7 +7,9 @@
         <% end %>
         <div class="card-body">
           <h6 class="card-title"><%= post.goods_name %></h6>
-          <!--<p class="card-text">タグ</p>-->
+          <p class="card-text">
+            <%= render "likes/like-btn", post: post %>
+          </p>
         </div>
       </div>
       <% end %>

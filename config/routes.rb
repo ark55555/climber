@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:edit,:update]
   get 'users/confirm' => 'users#confirm'
   patch 'users/retire' => 'users#retire'
-  
-  resources :posts
+
+  resources :posts do
+    resource :likes, only: [:create, :destroy]
+  end
 
 end

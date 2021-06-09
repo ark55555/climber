@@ -23,26 +23,26 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user.id), class: 'far fa-user-circle nav-link text-dark' %>
+              <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-user-circle nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿フォーム', new_post_path, class: 'far fa-edit nav-link text-dark' %>
+              <%= link_to ' 投稿フォーム', new_post_path, class: 'fas fa-edit nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿一覧', posts_image_path, class: 'far fa-images nav-link text-dark' %>
+              <%= link_to ' 投稿一覧', posts_path, class: 'fas fa-images nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-dark' %>
+              <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-dark' %>
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to '投稿一覧', posts_path, class: 'fas fa-images nav-link text-dark' %>
+              <%= link_to ' 投稿一覧', posts_path, class: 'fas fa-images nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-dark' %>
+              <%= link_to " 新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-dark' %>
+              <%= link_to " ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-dark' %>
             </li>
             <% end %>
             </ul>
@@ -50,6 +50,9 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+    <main>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </main>
   </body>
 </html>
