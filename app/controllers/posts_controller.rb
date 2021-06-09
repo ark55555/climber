@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 
-
   def new
     @post = Post.new
   end
@@ -16,11 +15,14 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(6)
+    @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+    @post_comment = PostComment.new
+    @post_comments = @post.post_comments.page(params[:page]).per(8)
   end
 
   def edit
