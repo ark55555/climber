@@ -1,4 +1,4 @@
-<table>
+<table class="table table-borderless">
   <tbody>
     <tr>
       <td>
@@ -16,10 +16,23 @@
     </tr>
     <tr>
       <td>
+        フォロー:<%= link_to user.followings.count, user_followings_path(user) %>
+        フォロワー:<%= link_to user.followers.count, user_followers_path(user) %></td>
+    </tr>
+    <tr class="mt-3">
+    <% if current_user != user %>
+      <td>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, "data-confirm" => "フォローを解除しますか？", class: "btn btn-info btn-sm fas fa-check-circle" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-info btn-sm fas fa-check-circle" %>
+        <% end %>
       </td>
+    <% else %>
+      <td>
+        <%= link_to ' 編集', edit_user_path(user), class: "btn btn-outline-secondary btn-sm fas fa-user-cog" %>
+      </td>
+    <% end %>
     </tr>
   </tbody>
 </table>
-<div class="actions my-2">
-    <%= link_to '編集', edit_user_path(user), class: "btn btn-outline-secondary btn-sm fas fa-user-cog" %>
-</div>

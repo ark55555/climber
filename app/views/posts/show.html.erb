@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <%= render "users/info", user: @user %>
     </div>
-    <div class="col-md-5 offset-md-1">
+    <div class="col-md-5">
       <h5 class="text-dark bg-light text-center"><%= @post.goods_name %></h5>
       <div class="card shadow h-100">
         <%= attachment_image_tag @post, :image, class: "card-img-top h-50"%>
