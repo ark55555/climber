@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @posts = @user.posts.all.page(params[:page]).per(6)
   end
   
+  def bookmark
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @bookmark_list = Post.find(bookmarks)
+  end
+  
   def edit
     @user = User.find(params[:id])
   end

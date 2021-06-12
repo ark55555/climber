@@ -18,6 +18,7 @@
     </div>
     <div class="col-md-3">
       <%= render "likes/like-btn", post: @post %>
+      <%= render "bookmarks/bookmark-btn", post: @post %>
       <p class="fas fa-comment ml-2"><%= @post.post_comments.count %></p>
       <h6>コメント一覧</h6>
       <%= render 'post_comments/comment', post_comment: @post_comment%>

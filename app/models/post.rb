@@ -12,7 +12,17 @@ class Post < ApplicationRecord
   end
   
   def bookmarked_by?(user)
-    bookmarks.where(user_id: user.id).exists?
+    bookmarks.where(user_id: user).exists?
+  end
+  
+  # 現在ログインしているユーザーidを受け取り、記事をストックする
+  def bookmark(user)
+    bookmarks.create(user_id: user.id)
+  end
+
+  # 現在ログインしているユーザーidを受け取り、記事のストックを解除する
+  def unbookmark(user)
+    bookmarks.find_by(user_id: user.id).destroy
   end
 
 end

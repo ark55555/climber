@@ -1,0 +1,10 @@
+<h4 class="text-dark bg-light text-center py-3">フォロー中リスト</h4>
+  <% if @users.exists? %>
+    <% @users.each do |user| %>
+    <div class="d-flex flex-row">
+		  <%= render 'users/info', user: user %>
+		</div>
+		<% end %>
+  <% else %>
+    <p>フォローユーザーはいません</p>
+  <% end %>
