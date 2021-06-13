@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  has_many :posts, dependent: :destroy
+  has_many :posts
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -34,7 +34,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   def self.guest
     find_or_create_by!(name: 'ゲスト', email: 'guest@test.com') do |user|
       user.password = SecureRandom.urlsafe_base64

@@ -23,12 +23,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def confirm
+  def destroy
+    @user = User.find_by(id: params[:id])
+    if @user.destroy
+      redirect_to root_path, notice: "アカウントを削除しました。またのご利用を心よりお待ちしております"
+    else
+      render :edit
+    end
   end
-
-  def retire
-  end
-
+  
   private
 
   def user_params

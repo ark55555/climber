@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-  <h4 class="text-dark bg-light py-3">プロフィール編集</h4>
+  <h4 class=" py-3">プロフィール編集</h4>
     <div class="col-md-12 mx-2 text-center shadow p-2 my-5">
     <%= form_with model: @user, local:true do |f| %>
     <div class="form-group">
@@ -22,7 +22,7 @@
     </div>
     <% end %>
     <%= link_to "パスワードの変更はこちら", edit_user_registration_path, class: "btn btn-primary mt-2" %><br>
-    <%= link_to "アカウントを削除", users_confirm_path, class: "btn btn-outline-secondary text-dark mt-2" %><br>
+    <%= link_to "アカウントを削除", user_path(@user.id), method: :delete, "data-confirm" => "ユーザー情報が見れなくなります。本当に削除しますか？", class: "btn btn-outline-secondary mt-4" %><br>
     <%= link_to 'マイページに戻る', user_path(@user), class: "fas fa-undo text-dark mt-2" %>
     </div>
   </div>

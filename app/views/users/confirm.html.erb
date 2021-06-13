@@ -1,0 +1,11 @@
+<div class="container pt-4">
+    <h1 class="mt-4">本当に退会しますか？</h1>
+    <p class="text-center my-3">退会すると、あなたのユーザー情報や投稿履歴全て削除されます。<br>
+    退会する場合は、「退会する」をクリックしてください。</p>
+ <div class="row">
+   <div class="mx-auto">
+     <%= link_to 'マイページに戻る', user_path(@user), class: "fas fa-undo text-dark mt-2" %>
+     <%= link_to "退会する", users_retire_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-secondary ml-4" %>
+    </div>
+ </div>
+</div>

@@ -13,16 +13,13 @@ Rails.application.routes.draw do
   end
 
   root to: 'homes#top'
-  resources :users, only: [:show,:edit,:update] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     get :bookmark, on: :member
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings'
     get 'followers' => 'relationships#followers'
 
   end
-  get 'users/confirm' => 'users#confirm'
-  patch 'users/retire' => 'users#retire'
-
 
   resources :posts do
     resource :likes, only: [:create, :destroy]

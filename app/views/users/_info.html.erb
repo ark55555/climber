@@ -12,9 +12,20 @@
       <td>投稿：<%= user.posts.count %>件</td>
     </tr>
     <tr>
-      <td><%= user.introduction %></td>
+      <td>
+				<% if user.introduction.present? %>
+					<%= user.introduction %>
+				<% else %>
+					自己紹介がありません
+				<% end %>
+      </td>
+    </tr>
+    <% if current_user == user %>
+    <tr>
+      <td><%= link_to "お気に入り一覧", bookmark_user_path(user), class: "fas fa-bookmark" %></td>
     </tr>
     <tr>
+    <% end %>
       <td>
         <%= link_to "フォロー:#{user.followings.count}", user_followings_path(user) %>
         <%= link_to "フォロワー:#{user.followers.count}", user_followers_path(user) %></td>
