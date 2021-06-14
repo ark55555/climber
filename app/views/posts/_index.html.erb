@@ -7,7 +7,7 @@
   <div class="card-body">
     <h6 class="card-title"><%= post.goods_name %></h6>
     <p class="card-text">
-      <span><%= render "likes/like-btn", post: post %></span>
+      <span id="like-btn-<%= post.id %>"><%= render "likes/like-btn", post: post %></span>
       <span class="ml-2"><%= render "bookmarks/bookmark-btn", post: post %></span>
       <span class="fas fa-comment ml-2"><%= post.post_comments.count %></span><br>
       <%= link_to "詳細をみる", post_path(post) %>
