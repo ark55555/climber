@@ -1,0 +1,5 @@
+$("#comments-count-<%= @post.id %>").html("コメント数: <%= @post.post_comments.count %>");
+
+$("#comments-area").html("<%= j(render 'post_comments/index', {post_comments: @post.post_comments} ) %>");
+
+$("textarea").val("");

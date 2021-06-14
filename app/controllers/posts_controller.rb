@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments.page(params[:page]).per(8)
+    @post_comments = @post.post_comments
   end
 
   def edit

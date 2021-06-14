@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :users, only: [:show, :edit, :update, :destroy] do
     get :bookmark, on: :member
+    get :following, on: :member
+    get :followers, on: :member
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings'
-    get 'followers' => 'relationships#followers'
 
   end
 

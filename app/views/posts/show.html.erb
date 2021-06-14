@@ -19,10 +19,12 @@
     <div class="col-md-3">
       <span id="like-btn-<%= @post.id %>"><%= render "likes/like-btn", post: @post %></span>
       <span><%= render "bookmarks/bookmark-btn", post: @post %></span>
-      <p class="fas fa-comment ml-2"><%= @post.post_comments.count %></p>
+     <p id="comments-count-<%= @post.id %>"><%= @post.post_comments.count %>件</p>
       <h6>コメント一覧</h6>
-      <%= render 'post_comments/comment', post_comment: @post_comment%>
-      <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
+          <li id="comments-area">
+            <%= render "post_comments/index", post_comments: @post_comments %>
+        </li>
+        <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
 
     </div>
   </div>

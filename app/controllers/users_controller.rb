@@ -10,6 +10,16 @@ class UsersController < ApplicationController
     bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
     @bookmark_list = Post.find(bookmarks)
   end
+  
+  def following
+    user = User.find(params[:id])
+		@users = user.following
+  end
+
+  def followers
+    user = User.find(params[:id])
+		@users = user.followers
+  end
 
   def edit
     @user = User.find(params[:id])

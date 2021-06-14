@@ -1,4 +1,4 @@
-<%= form_with model:[post,post_comment], local:true do |f| %>
+<%= form_with model:[post, post_comment] do |f| %>
   <%= f.text_area :comment, size: "30x3", placeholder: "コメントを入力" %><br>
-  <%= f.submit "投稿", class: "btn btn-secondary btn-sm" %>
+  <%= f.submit "投稿", class: "btn btn-secondary btn-sm float-right" %>
 <% end %>

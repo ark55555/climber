@@ -27,17 +27,18 @@
     <tr>
     <% end %>
       <td>
-        <%= link_to "フォロー:#{user.followings.count}", user_followings_path(user) %>
-        <%= link_to "フォロワー:#{user.followers.count}", user_followers_path(user) %></td>
+        <span id="following-count-<%= user.id %>">
+          <%= link_to "フォロー中:#{user.following.count}", following_user_path(user) %>
+        </span>
+        <span id="follower-count-<%= user.id %>">
+          <%= link_to "フォロワー:#{user.followers.count}", followers_user_path(user) %>
+        </span>
+      </td>
     </tr>
     <tr class="mt-3">
     <% if current_user != user %>
-      <td>
-        <% if current_user.following?(user) %>
-          <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, "data-confirm" => "フォローを解除しますか？", class: "btn btn-info btn-sm fas fa-check-circle" %>
-        <% else %>
-          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-outline-info btn-sm fas fa-check-circle" %>
-        <% end %>
+      <td id="follow-btn-<%= user.id %>">
+        <%= render "users/follow-btn", user: user %>
       </td>
     <% else %>
       <td>

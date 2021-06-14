@@ -1,0 +1,16 @@
+<% post_comments.each do |post_comment| %>
+  <% unless post_comment.id.nil? %>
+  <div class="media">
+    <%= link_to user_path(post_comment.user) do %>
+      <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: "40x40", class: "rounded-circle align-self-start mr-2" %>
+      <br><%= post_comment.user.name %>
+    <% end %>
+    <div class="media-body">
+      <%= post_comment.comment %>
+      <% if post_comment.user == current_user %>
+        <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-sm btn-danger", method: :delete, remote: true %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+<% end %>

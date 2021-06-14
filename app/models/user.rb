@@ -6,33 +6,33 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
 
   #フォローする
-  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
   # 自分がフォローしている人
-  has_many :followings, through: :active_relationships, source: :follower
+  has_many :following, through: :following_relationships, source: :following
   #フォローされる
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   # 自分をフォローしている人
-  has_many :followers, through: :passive_relationships, source: :following
+  has_many :followers, through: :follower_relationships, source: :follower
 
-  # ユーザーをフォローする
-  def follow(current_user_id, user_id)
-    active_relationships.create(following_id: current_user_id, follower_id: user_id )
+
+  #フォローしているかを確認するメソッド
+  def following?(other_user)
+    following_relationships.find_by(following_id: other_user.id)
+  end
+  #フォローするときのメソッド
+  def follow(other_user)
+    following_relationships.create(following_id: other_user)
   end
 
-  # ユーザーのフォローを外す
-  def unfollow(current_user_id, user_id)
-    active_relationships.find_by(following_id: current_user_id, follower_id: user_id).destroy
-  end
-
-  #フォローしてたらtrueを返す
-  def following?(user)
-    followings.include?(user)
+  #フォローを外すときのメソッド
+  def unfollow(other_user)
+    following_relationships.find_by(following_id: other_user).destroy
   end
 
   def self.guest
