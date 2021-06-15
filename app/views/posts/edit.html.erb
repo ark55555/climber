@@ -24,7 +24,7 @@
 <!--おすすめ度-->
             <tr>
               <td>おすすめ度</td>
-              <td></td>
+              <td id="evaluate_stars"></td>
             </tr>
             <tr>
               <td>説明文</td>
@@ -37,7 +37,14 @@
           <%= f.submit "編集", class: "btn btn-secondary btn-sm" %>
         </div>
       <% end %>
-
+      <script>
+        $('#evaluate_stars').raty({
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'post[rate]'
+        });
+      </script>
     </div>
   </div>
 </div>

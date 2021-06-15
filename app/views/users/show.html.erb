@@ -11,7 +11,18 @@
       <%= render "info", user: @user %>
     </div>
     <div class="row row-cols-1 row-cols-md-3">
-      <%= render "posts/index", posts: @posts %>
+      <% @posts.each do |post| %>
+        <%= render "posts/index", post: post %>
+      <% end %>
+    <script>
+      $('.post-evaluation').raty({
+        readOnly: true,
+        score: function() {
+          return $(this).attr('data-score');
+        },
+        path: '/assets/'
+      });
+    </script>
     </div>
   </div>
 </div>
