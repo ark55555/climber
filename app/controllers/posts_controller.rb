@@ -7,7 +7,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_list = params[:post][:tag_name].split(",")
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "投稿ありがとうございます"
     else
       render :new
@@ -16,6 +18,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
+    @tag_list = Tag.all
   end
 
   def show
@@ -23,6 +26,13 @@ class PostsController < ApplicationController
     @user = @post.user
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.order("created_at DESC")
+    @post_tags = @post.tags 
+  end
+  
+  def search
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def bookmarks
@@ -32,11 +42,14 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:tag_name).join(",")
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(",")
     if @post.update(post_params)
+      @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "投稿情報更新しました"
     else
       render "edit"

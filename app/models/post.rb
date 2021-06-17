@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
   
   # バリデーション----
   validates :goods_name, presence: true
@@ -28,5 +30,23 @@ class Post < ApplicationRecord
   def unbookmark(user)
     bookmarks.find_by(user_id: user.id).destroy
   end
+  
+  def save_tag(tags)
+      current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
+      old_tags = current_tags - tags
+      new_tags = tags - current_tags
+  
+    # 既に存在するタグは削除
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(tag_name:old_name)
+    end
+    
+    # 新しいタグ作成
+    new_tags.each do |new_name|
+      post_tag = Tag.find_or_create_by(tag_name:new_name)
+      self.tags << post_tag
+    end
+  end
+
 
 end

@@ -4,7 +4,7 @@
       <h4 class="py-3">投稿フォーム</h4>
       <%= render 'layouts/errors', resource: @post %>
 
-      <%= form_with model: @post, local:true do |f| %>
+      <%= form_with model: @post, local: true do |f| %>
 
         <table class="table table-borderless">
           <tbody>
@@ -12,15 +12,15 @@
               <td>画像</td>
               <td><%= f.attachment_field :image %></td>
             </tr>
-
             <tr>
               <td>商品名</td>
               <td><%= f.text_field :goods_name, placeholder: "商品名" %></td>
             </tr>
-<!--タグ作成予定-->
             <tr>
               <td>タグ</td>
-              <td></td>
+              <td>
+              <%= f.text_field :tag_name, placeholder: "カンマ(,)で区切り入力してください" %>
+              </td>
             </tr>
             <tr>
               <td>おすすめ度</td>

@@ -26,5 +26,9 @@ Rails.application.routes.draw do
     resource :bookmarks, only: [:create, :destroy]
     get :bookmarks, on: :collection
   end
+  
+  resources :tags do
+    get 'posts', to: 'posts#search'
+  end
 
 end

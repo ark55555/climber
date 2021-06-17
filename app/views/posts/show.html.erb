@@ -43,7 +43,13 @@
             </div>
             <span class="post-evaluation" data-score="<%= @post.rate %>"></span>
             <p class="card-text py-2"><%= @post.caption%></p>
-
+            <span>タグ：</span>
+            <% @post_tags.each do |tag| %>
+            <span>
+              <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+              <%= "(#{tag.posts.count})" %>
+            </span>
+            <% end %>
           <script>
             $('.post-evaluation').raty({
               readOnly: true,
@@ -56,7 +62,12 @@
         </div>
       </div>
     </div>
+    <div class="back my-2 mx-auto">
+      <small><%= link_to "投稿一覧に戻る", posts_path, class: "fas fa-undo" %></small>
+    </div>
   </div>
+
+
   <div class="row">
     <ul class="list-group list-group-flush">
       <h6 class="comment-create">コメント一覧</h6>
