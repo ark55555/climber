@@ -1,16 +1,35 @@
-<% post_comments.each do |post_comment| %>
+<button class="btn btn-link list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</button>
+
+<% post_comments.first(2).each do |post_comment| %>
   <% unless post_comment.id.nil? %>
-  <div class="media">
-    <%= link_to user_path(post_comment.user) do %>
-      <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: "40x40", class: "rounded-circle align-self-start mr-2" %>
-      <br><%= post_comment.user.name %>
-    <% end %>
-    <div class="media-body">
-      <%= post_comment.comment %>
-      <% if post_comment.user == current_user %>
-        <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-sm btn-danger", method: :delete, remote: true %>
-      <% end %>
-    </div>
-  </div>
+    <li class="list-group-item">
+      <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image rounded-circle mr-2", size: "30x30" %>
+      <span><%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %></span><br>
+          <%= post_comment.comment %><br>
+          <% if post_comment.user == current_user %>
+            <%= link_to "", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true, class: "comment_destroy fas fa-trash" %>
+          <% end %>
+          <span class="comment-date pull-right">
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+          </span>
+    </li>
   <% end %>
 <% end %>
+<!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+<div class="collapse" id="collapseExample">
+  <% post_comments.offset(2).each do |post_comment| %>
+    <% unless post_comment.id.nil? %>
+      <li class="list-group-item">
+        <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image rounded-circle mr-2", size: "30x30" %>
+        <span><%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %></span><br>
+          <%= post_comment.comment %><br>
+          <% if post_comment.user == current_user %>
+            <%= link_to "", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true, class: "comment_destroy fas fa-trash" %>
+          <% end %>
+          <span class="comment-date pull-right">
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+          </span>
+      </li>
+    <% end %>
+  <% end %>
+</div>

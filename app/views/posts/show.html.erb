@@ -1,19 +1,49 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <%= render "users/info", user: @user %>
-    </div>
-    <div class="col-md-5">
-      <h5 class="text-dark bg-light text-center"><%= @post.goods_name %></h5>
-      <div class="card shadow h-100">
-        <%= attachment_image_tag @post, :image, class: "card-img-top h-50"%>
-        <div class="card-body">
-          <span class="post-evaluation" data-score="<%= @post.rate %>"></span>
-          <p class="card-text"><%= @post.caption%></p>
-          <% if @post.user == current_user %>
-            <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-secondary mr-2" %>
-            <%= link_to '削除', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+  <div class="card shadow mb-3">
+    <div class="row g-0">
+      <div class="col-md-5">
+        <%= attachment_image_tag @post, :image, size: "400x300" %><br>
+        <div class="d-flex position-relative">
+          <div class="flex-shrink-0 me-3 m-2">
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "rounded-circle flex-shrink-0 me-3" %><br>
+            <%= link_to "#{@user.name}", user_path(@user) %>
+          </div>
+          <div class="my-auto">
+          <span id="following-count-<%= @user.id %>">
+            <%= link_to "フォロー中:#{@user.following.count}", following_user_path(@user) %>
+          </span>
+          <span id="follower-count-<%= @user.id %>">
+            <%= link_to "フォロワー:#{@user.followers.count}", followers_user_path(@user) %>
+          </span>
+          <p>
+            <% if current_user != @user %>
+              <span id="follow-btn-<%= @user.id %>">
+                <%= render "users/follow-btn", user: @user %>
+              </span>
+            <% else %>
+              <span>
+                <%= link_to ' 編集', edit_user_path(@user), class: "btn btn-outline-secondary btn-sm fas fa-user-cog" %>
+              </span>
           <% end %>
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h5 class="card-title bg-light text-center"><%= @post.goods_name %></h5>
+            <div>
+              <span id="like-btn-<%= @post.id %>" class="mr-2"><%= render "likes/like-btn", post: @post %></span>
+              <span id="bookmark-btn-<%= @post.id %>" class="mr-1"><%= render "bookmarks/bookmark-btn", post: @post %></span>
+              <span id="comments-count-<%= @post.id %>" class="fas fa-comment fa-fw"><%= @post.post_comments.count %></span>
+              <% if @post.user == current_user %>
+                <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-secondary mr-2" %>
+                <%= link_to '削除', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </div>
+            <span class="post-evaluation" data-score="<%= @post.rate %>"></span>
+            <p class="card-text py-2"><%= @post.caption%></p>
+
           <script>
             $('.post-evaluation').raty({
               readOnly: true,
@@ -26,16 +56,18 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <span id="like-btn-<%= @post.id %>"><%= render "likes/like-btn", post: @post %></span>
-      <span><%= render "bookmarks/bookmark-btn", post: @post %></span>
-     <p id="comments-count-<%= @post.id %>"><%= @post.post_comments.count %>件</p>
-      <h6>コメント一覧</h6>
-          <li id="comments-area">
-            <%= render "post_comments/index", post_comments: @post_comments %>
-        </li>
+  </div>
+  <div class="row">
+    <ul class="list-group list-group-flush">
+      <h6 class="comment-create">コメント一覧</h6>
+      <span id="comments-area"><%= render "post_comments/index", post_comments: @post_comments %></span>
+    </ul>
+    <hr>
+    <% if user_signed_in? %>
+      <div>
+    <h6 class="comment-create">新規コメント</h6>
         <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
-
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

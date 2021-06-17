@@ -3,14 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.page(params[:page]).per(6)
+    @posts = @user.posts.all.order("created_at DESC").page(params[:page]).per(6)
   end
 
-  def bookmark
-    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @bookmark_list = Post.find(bookmarks)
-  end
-  
   def following
     user = User.find(params[:id])
 		@users = user.following
@@ -41,7 +36,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
 
   def user_params

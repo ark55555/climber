@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-5 col-sm-10  mx-2 text-center shadow px-0 my-5">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10  mx-2 mx-sm-auto text-center shadow rounded px-0 my-5">
       <h4 class="py-3">ログイン</h4>
 
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
@@ -23,9 +23,15 @@
       </div>
       <% end %>
 
-      <div class="badge badge-light  my-3 py-2">
-        <h6>登録がお済みでない方</h6>
-        <%= render "devise/shared/links" %>
+      <div class="mx-auto mt-2">
+        <%= link_to "ゲストログイン(閲覧用)", users_guest_path, method: :post, class: 'fas fa-sign-in-alt btn btn-warning btn-sm' %>
+      </div>
+
+      <div class="my-1 py-2">
+        <p class="small">
+          登録がお済みでない方
+          <%= render "devise/shared/links" %>
+        </p>
       </div>
 
     </div>

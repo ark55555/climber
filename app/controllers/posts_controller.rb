@@ -22,7 +22,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments
+    @post_comments = @post.post_comments.order("created_at DESC")
+  end
+
+  def bookmarks
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @bookmark_list = Post.find(bookmarks)
   end
 
   def edit
@@ -47,6 +52,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:goods_name, :image, :caption)
+    params.require(:post).permit(:goods_name, :image, :caption, :rate)
   end
 end

@@ -1,13 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  # ログイン後マイページへ遷移
   def after_sign_in_path_for(resource)
     user_path(current_user.id)
   end
 
+  # ゲストユーザー
   def check_guest
     if current_user.email == 'guest@test.com'
-      redirect_to user_path(current_user), alert: 'ゲストユーザーの編集・退会はできません。'
+      redirect_to user_path(current_user), alert: 'ゲストユーザーは操作できません。'
     end
   end
 

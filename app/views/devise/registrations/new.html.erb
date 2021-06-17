@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 col-sm-10  mx-2 text-center shadow px-0 my-5">
+    <div class="col-md-5 col-sm-10  mx-2 mx-sm-auto text-center shadow rounded px-0 my-5">
       <h4 class="py-3">新規登録</h4>
 
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
@@ -38,12 +38,17 @@
           <%= f.submit "新規登録", class: "btn btn-primary btn-sm" %>
         </div>
       <% end %>
-
-      <div class="badge badge-light my-3 py-2">
-        <h6>既に登録済みの方</h6>
-        <%= render "devise/shared/links" %>
+      
+       <div class="mx-auto mt-2">
+        <%= link_to "ゲストログイン(閲覧用)", users_guest_path, method: :post, class: 'fas fa-sign-in-alt btn btn-warning btn-sm' %>
       </div>
 
+      <div class="my-1 py-2">
+        <p class="small">
+          既に登録済みの方
+          <%= render "devise/shared/links" %>
+        </p>
+      </div>
     </div>
   </div>
 </div>
