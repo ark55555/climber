@@ -21,6 +21,11 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :follower
 
 
+  #バリデーション----
+  validates :name, presence: true, length: {maximum: 20, minimum: 2}, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
+
+
   #フォローしているかを確認するメソッド
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
