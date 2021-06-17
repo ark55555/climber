@@ -3,3 +3,7 @@ ja:
     attributes:
       user:
         name: ユーザー名
+    attributes:
+      post:
+        goods_name: 商品名
+        caption: 説明

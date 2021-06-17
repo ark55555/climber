@@ -56,4 +56,20 @@
   padding: 0.2em 0.5em;
   color: #454545;
  }
+ 
+ #error_explanation {
+  color:#262626; 
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
+ }
+ 
+ .alert-danger {
+  color:#262626; 
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
+ }
 
