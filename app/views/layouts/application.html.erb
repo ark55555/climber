@@ -51,8 +51,7 @@
       </nav>
     </header>
     <main>
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
+      <%= render "layouts/flash" %>
       <%= yield %>
     </main>
   </body>

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy, :search, :bookmarks]
 
   def new
     @post = Post.new
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(",")
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to post_path(@post), notice: "投稿ありがとうございます"
+      redirect_to post_path(@post), info: "投稿ありがとうございます"
     else
       render :new
     end
@@ -26,9 +27,9 @@ class PostsController < ApplicationController
     @user = @post.user
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.order("created_at DESC")
-    @post_tags = @post.tags 
+    @post_tags = @post.tags
   end
-  
+
   def search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
@@ -50,7 +51,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(",")
     if @post.update(post_params)
       @post.save_tag(tag_list)
-      redirect_to post_path(@post), notice: "投稿情報更新しました"
+      redirect_to post_path(@post), info: "投稿情報更新しました"
     else
       render "edit"
     end
@@ -59,7 +60,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, notice: "投稿を削除しました"
+    redirect_to posts_path, secondary: "投稿を削除しました"
   end
 
   private

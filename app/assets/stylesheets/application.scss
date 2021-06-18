@@ -32,7 +32,6 @@
   border-color: #ABD0CE;
  }
 
-
  .top-bg {
   height: 40vh;
   background-image: image-url("top4.jpg");
@@ -74,14 +73,19 @@
   border:2px solid #990000;
   padding:12px; font-weight:850;
  }
+ 
+ .alert-notice{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
 
- .alert-danger {
-  color:#262626;
-  background:#FFEBE8;
-  text-align: center;
-  border:2px solid #990000;
-  padding:12px; font-weight:850;
- }
+.alert-alert{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
 
 .back{
   a{
