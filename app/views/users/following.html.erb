@@ -1,10 +1,15 @@
-<h4 class="text-dark bg-light text-center py-3">フォロー中リスト</h4>
-  <% if @users.exists? %>
-    <% @users.each do |user| %>
-    <div class="d-flex flex-row">
-		  <%= render 'users/info', user: user %>
-		</div>
-		<% end %>
-  <% else %>
-    <p>フォローユーザーはいません</p>
-  <% end %>
+<div class="container">
+  <h4 class="text-center py-3">フォロー中リスト</h4>
+  <div class="row mb-3">
+    <% if @users.exists? %>
+      <% @users.each do |user| %>
+        <div class="col-md-3">
+    		  <%= render 'users/info', user: user %>
+    		</div>
+  		<% end %>
+    <% else %>
+      <p>フォローユーザーはいません</p>
+    <% end %>
+  </div>
+  <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+</div>
