@@ -73,7 +73,7 @@
   border:2px solid #990000;
   padding:12px; font-weight:850;
  }
- 
+
  .alert-notice{
   color: #3c763d;
   background-color: #dff0d8;
@@ -86,7 +86,6 @@
   border-color: #ebccd1;
 }
 
-
 .back{
   a{
     color: #a3a1a1;
@@ -95,4 +94,13 @@
     color: #000;
     transition: 0.5s;
   }
+}
+
+
+.edit-btn {
+ color: #84B1ED;
+}
+
+.destroy-btn {
+ color: #6E7783;
 }

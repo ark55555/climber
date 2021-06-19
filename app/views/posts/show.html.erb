@@ -36,9 +36,9 @@
               <span id="like-btn-<%= @post.id %>" class="mr-2"><%= render "likes/like-btn", post: @post %></span>
               <span id="bookmark-btn-<%= @post.id %>" class="mr-1"><%= render "bookmarks/bookmark-btn", post: @post %></span>
               <span id="comments-count-<%= @post.id %>" class="fas fa-comment fa-fw"><%= @post.post_comments.count %></span>
-              <% if @post.user == current_user %>
-                <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-secondary mr-2" %>
-                <%= link_to '削除', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+              <% if @post.user == current_user || current_user.admin? %>
+                <%= link_to '', edit_post_path(@post), class: "fas fa-edit edit-btn mr-2" %>
+                <%= link_to '', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "fas fa-trash destroy-btn" %>
               <% end %>
             </div>
             <span class="post-evaluation" data-score="<%= @post.rate %>"></span>
@@ -66,17 +66,16 @@
       <small><%= link_to "投稿一覧に戻る", posts_path, class: "fas fa-undo" %></small>
     </div>
   </div>
-
-
+  
   <div class="row">
-    <ul class="list-group list-group-flush">
+    <div class="col-md-6">
       <h6 class="comment-create">コメント一覧</h6>
-      <span id="comments-area"><%= render "post_comments/index", post_comments: @post_comments %></span>
-    </ul>
-    <hr>
+      <ul id="comments-area" class="list-inline"><%= render "post_comments/index", post_comments: @post_comments %></ul>
+    </div>
+
     <% if user_signed_in? %>
-      <div>
-    <h6 class="comment-create">新規コメント</h6>
+      <div class="offset-md-1 col-md-3">
+      <h6 class="comment-create">新規コメント</h6>
         <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
       </div>
     <% end %>
