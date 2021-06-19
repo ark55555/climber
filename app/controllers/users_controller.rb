@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -46,7 +45,7 @@ class UsersController < ApplicationController
 
   def ensure_correct_user
     @user = User.find(params[:id])
-    unless @user == current_user
+    unless @user == current_user || current_user.admin?
       redirect_to user_path(current_user)
       flash[:warning] = '自分のユーザー情報以外は変更することができません'
     end

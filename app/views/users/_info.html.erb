@@ -46,5 +46,10 @@
       </td>
     <% end %>
     </tr>
+    <% if current_user.admin? %>
+      <tr>
+        <td><%= link_to "管理者権限で編集", edit_user_path, class: "btn btn-outline-secondary btn-sm fas fa-user-cog" %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

@@ -18,6 +18,15 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+ }
+ 
+ 
+
  .pagination {
   justify-content: center;
  }
@@ -95,7 +104,6 @@
     transition: 0.5s;
   }
 }
-
 
 .edit-btn {
  color: #84B1ED;
