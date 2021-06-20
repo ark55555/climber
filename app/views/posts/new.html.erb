@@ -24,7 +24,7 @@
             </tr>
             <tr>
               <td>おすすめ度</td>
-              <td id="evaluate_stars"></td>
+              <td><div class="evaluate_stars"></div></td>
             </tr>
             <tr>
               <td>説明文</td>
@@ -38,7 +38,7 @@
         </div>
       <% end %>
       <script>
-        $('#evaluate_stars').raty({
+        $('.evaluate_stars').raty({
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",

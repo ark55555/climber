@@ -8,7 +8,10 @@
           <tbody>
             <tr>
               <td>画像</td>
-              <td><%= f.attachment_field :image %></td>
+              <td>
+                <%= attachment_image_tag @post, :image, size: "300x200" %><br>
+                <%= f.attachment_field :image %>
+              </td>
             </tr>
 
             <tr>
@@ -17,11 +20,11 @@
             </tr>
             <tr>
               <td>タグ</td>
-              <td><%= f.text_field :tag_name, placeholder: "カンマ(,)で区切り入力してください" %></td>
+              <td><%= f.text_field :tags, value: @tag_list, placeholder: "カンマ(,)で区切り入力してください" %></td>
             </tr>
             <tr>
               <td>おすすめ度</td>
-              <td id="evaluate_stars"></td>
+              <td><div class="evaluate_stars" data-score=<%=@post.rate%>></div></td>
             </tr>
             <tr>
               <td>説明文</td>
@@ -38,7 +41,7 @@
         <small><%= link_to "投稿ページに戻る", post_path(@post), class: "fas fa-undo" %></small>
       </div>
       <script>
-        $('#evaluate_stars').raty({
+        $('.evaluate_stars').raty({
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
