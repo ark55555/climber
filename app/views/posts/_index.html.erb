@@ -1,17 +1,25 @@
 <div class="col mb-4">
   <div class="card shadow rounded">
   <%= link_to post_path(post) do %>
-    <%= attachment_image_tag post, :image, class: "card-img-top", size: "200x200" %>
+    <%= attachment_image_tag post, :image, class: "card-img-top", fallback: "no_image_goods.png", size: "200x200" %>
   <% end %>
   <div class="card-body">
-    <h6 class="card-title"><%= post.goods_name %></h6>
-    <p class="card-text">
-      <span class="post-evaluation" data-score="<%= post.rate %>"></span><br>
-      <span id="like-btn-<%= post.id %>"><%= render "likes/like-btn", post: post %></span>
-      <span id="bookmark-btn-<%= post.id %>" class="ml-2"><%= render "bookmarks/bookmark-btn", post: post %></span>
-      <span class="fas fa-comment ml-2"><%= post.post_comments.count %></span><br>
-      <%= link_to "詳細をみる", post_path(post) %>
-    </p>
+    <h6 class="card-title"><strong><%= post.goods_name %></strong></h6>
+    <div class="card-text">
+      <div class="post-evaluation mb-2" data-score="<%= post.rate %>"></div>
+      <div class="d-flex justify-content-between">
+        <div class="">
+          <span id="like-btn-<%= post.id %>"><%= render "likes/like-btn", post: post %></span>
+          <span id="bookmark-btn-<%= post.id %>" class="ml-2"><%= render "bookmarks/bookmark-btn", post: post %></span>
+          <span class="fas fa-comment ml-2"><%= post.post_comments.count %></span><br>
+        </div>
+        <div class="post-detail">
+          <%= link_to post_path(post) do %>
+            詳細を見る<i class="fas fa-angle-double-right"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
   </div>
 </div>

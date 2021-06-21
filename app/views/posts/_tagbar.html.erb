@@ -1,0 +1,9 @@
+<div id="tag-bar" class="inactive">
+  <% if @tag_list.present? %>
+    <% @tag_list.each do |list| %>
+      <%= link_to "# #{list.tag_name} (#{list.posts.count})", tag_posts_path(tag_id: list.id), class: "tag-search p-1 m-1" %>
+    <% end %>
+  <% else %>
+    <p>登録されているタグはありません</p>
+  <% end %>
+</div>

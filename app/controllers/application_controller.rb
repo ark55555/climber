@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :secondary, :danger
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :tag_all
 
   # ログイン後マイページへ遷移
   def after_sign_in_path_for(resource)
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
     if current_user.email == 'guest@test.com'
       redirect_to user_path(current_user), danger: 'ゲストユーザーは操作できません。'
     end
+  end
+  
+  def tag_all
+    @tag_list = Tag.all
   end
 
   protected

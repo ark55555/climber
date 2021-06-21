@@ -43,11 +43,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @tag_list = @post.tags.pluck(:tag_name).join(",")
+    @post_tags = @post.tags.pluck(:tag_name).join(",")
   end
 
   def update
-    tag_list = params[:post][:tag_name].split(",")
+    tag_list = params[:post][:tags].split(",")
     if @post.update(post_params)
       @post.save_tag(tag_list)
       redirect_to post_path(@post), info: "投稿情報更新しました"

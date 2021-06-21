@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <% if post.bookmarked_by?(current_user) %>
-    <%= link_to post.bookmarks.count, post_bookmarks_path(post), method: :delete, class: "fas fa-bookmark fa-fw bm_orenge", remote: true %>
+    <%= link_to post.bookmarks.count, post_bookmarks_path(post), method: :delete, class: "fas fa-bookmark bm_color", remote: true %>
   <% else %>
-    <%= link_to post.bookmarks.count, post_bookmarks_path(post), method: :post, class: "far fa-bookmark fa-fw bm_black", remote: true %>
+    <%= link_to post.bookmarks.count, post_bookmarks_path(post), method: :post, class: "far fa-bookmark bm_black", remote: true %>
   <% end %>
 <% end %>

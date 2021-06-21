@@ -1,4 +1,4 @@
-<a class="btn btn-link" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</a>
+<a class="btn btn-link" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><small>もっと見る...</small></a>
 <% post_comments.first(2).each do |post_comment| %>
   <% unless post_comment.id.nil? %>
     <li class="pt-1 border-bottom">
@@ -8,7 +8,7 @@
         </div>
         <div class="comment-text">
           <%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %><br>
-          <%= post_comment.comment %><br>
+          <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %><br>
           <p>
             <small><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
             <% if current_user == post_comment.user || current_user.admin? %>
