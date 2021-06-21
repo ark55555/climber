@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 mx-2 text-center shadow px-0 my-5">
-      <h4 class="py-3">投稿編集ページ</h4>
+      <h4>投稿編集ページ</h4>
       <%= form_with model: @post, local:true do |f| %>
 
         <table class="table table-borderless">
@@ -20,7 +20,7 @@
             </tr>
             <tr>
               <td>タグ</td>
-              <td><%= f.text_field :tags, value: @tag_list, placeholder: "カンマ(,)で区切り入力してください" %></td>
+              <td><%= f.text_field :tags, value: @post_tags, placeholder: "カンマ(,)で区切り入力してください" %></td>
             </tr>
             <tr>
               <td>おすすめ度</td>

@@ -2,10 +2,21 @@
   <div class="card shadow mb-3">
     <div class="row g-0">
       <div class="col-md-5">
-        <%= attachment_image_tag @post, :image, size: "400x300" %><br>
-        <div class="d-flex position-relative">
-          <div class="flex-shrink-0 me-3 m-2">
-            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100", class: "rounded-circle flex-shrink-0 me-3" %><br>
+        <div class="post-image shadow text-center">
+          <%= attachment_image_tag @post, :image, fallback: "no_image_goods.png", size: "400x300" %>
+        </div>
+        <div class="my-2 text-center">
+          <span id="like-btn-<%= @post.id %>" class="mr-2"><%= render "likes/like-btn", post: @post %></span>
+          <span id="bookmark-btn-<%= @post.id %>" class="mr-1"><%= render "bookmarks/bookmark-btn", post: @post %></span>
+          <span id="comments-count-<%= @post.id %>" class="fas fa-comment"><%= @post.post_comments.count %></span>
+          <% if @post.user == current_user || current_user.admin? %>
+            <%= link_to '', edit_post_path(@post), class: "fas fa-edit edit-btn mr-2" %>
+            <%= link_to '', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "fas fa-trash destroy-btn" %>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-around">
+          <div class="m-2">
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "user.png", size: "100x100", class: "rounded-circle flex-shrink-0 me-3" %><br>
             <%= link_to "#{@user.name}", user_path(@user) %>
           </div>
           <div class="my-auto">
@@ -15,14 +26,14 @@
           <span id="follower-count-<%= @user.id %>">
             <%= link_to "フォロワー:#{@user.followers.count}", followers_user_path(@user) %>
           </span>
-          <p>
+          <p class="m-1">
             <% if current_user != @user %>
               <span id="follow-btn-<%= @user.id %>">
                 <%= render "users/follow-btn", user: @user %>
               </span>
             <% else %>
               <span>
-                <%= link_to ' 編集', edit_user_path(@user), class: "btn btn-outline-secondary btn-sm fas fa-user-cog" %>
+                <%= link_to '', edit_user_path(@user), class: "btn btn-outline-secondary btn-sm fas fa-user-cog" %>
               </span>
           <% end %>
           </p>
@@ -30,26 +41,20 @@
         </div>
       </div>
       <div class="col-md-7">
-        <div class="card-body">
-          <h5 class="card-title bg-light text-center"><%= @post.goods_name %></h5>
-            <div>
-              <span id="like-btn-<%= @post.id %>" class="mr-2"><%= render "likes/like-btn", post: @post %></span>
-              <span id="bookmark-btn-<%= @post.id %>" class="mr-1"><%= render "bookmarks/bookmark-btn", post: @post %></span>
-              <span id="comments-count-<%= @post.id %>" class="fas fa-comment fa-fw"><%= @post.post_comments.count %></span>
-              <% if @post.user == current_user || current_user.admin? %>
-                <%= link_to '', edit_post_path(@post), class: "fas fa-edit edit-btn mr-2" %>
-                <%= link_to '', post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "fas fa-trash destroy-btn" %>
-              <% end %>
-            </div>
-            <span class="post-evaluation" data-score="<%= @post.rate %>"></span>
-            <p class="card-text py-2"><%= @post.caption%></p>
+        <!--<div class="card-body">-->
+          <h5 class="bg-light text-center my-2 p-1"><%= @post.goods_name %></h5>
+          <div>
             <span>タグ：</span>
             <% @post_tags.each do |tag| %>
-            <span>
-              <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-              <%= "(#{tag.posts.count})" %>
-            </span>
+              <span>
+                <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+                <%= "(#{tag.posts.count})" %>
+              </span>
             <% end %>
+          </div>
+          <div class="post-evaluation" data-score="<%= @post.rate %>"></div>
+          <div class="card-text py-2"><%=safe_join(@post.caption.split("\n"),tag(:br))%></div>
+ 
           <script>
             $('.post-evaluation').raty({
               readOnly: true,
@@ -59,14 +64,18 @@
               path: '/assets/'
             });
           </script>
-        </div>
+        <!--</div>-->
       </div>
     </div>
     <div class="back my-2 mx-auto">
-      <small><%= link_to "投稿一覧に戻る", posts_path, class: "fas fa-undo" %></small>
+      <small>
+        <%= link_to posts_path do %>
+          <i class="fas fa-undo"></i> 投稿一覧に戻る
+        <% end %>
+      </small>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-6">
       <h6 class="comment-create">コメント一覧</h6>
