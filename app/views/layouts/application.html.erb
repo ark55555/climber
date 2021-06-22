@@ -7,15 +7,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag('favicon.png') %>
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="sticky-top shadow-sm">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
         <%= link_to root_path do %>
-          <%= image_tag "logo2.png", size: "180x180", class: "navbar-brand" %>
+          <%= image_tag "logo.png", size: "200x120", class: "navbar-brand" %>
         <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,30 +23,47 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <li class="nav-item ">
-              <div class="btn btn-link fas fa-tag header-search nav-link">タグで探す</div>
+            <li class="nav-item">
+              <div class="btn btn-link header-search nav-link text-dark">
+                <i class="fas fa-tag"></i>タグで探す</div>
             </li>
             <li class="nav-item">
-              <%= link_to ' マイページ', user_path(current_user.id), class: 'fas fa-user-circle nav-link' %>
+             <span class="nav-link">
+                <%= link_to user_path(current_user.id) do %>
+                  <i class="fas fa-user-circle"></i><span class=" text-dark"> マイページ</span>
+                <% end %>
+              </span>
             </li>
             <li class="nav-item">
-              <%= link_to ' 投稿フォーム', new_post_path, class: 'fas fa-pen nav-link' %>
+              <span class="nav-link">
+                <%= link_to new_post_path do %>
+                  <i class="fas fa-pen"></i><span class=" text-dark"> 投稿フォーム</span>
+                <% end %>
+              </span>
             </li>
             <li class="nav-item">
-              <%= link_to ' 投稿一覧', posts_path, class: 'fas fa-images nav-link' %>
+              <span class="nav-link">
+                <%= link_to posts_path do %>
+                  <i class="far fa-images"></i><span class=" text-dark"> 投稿一覧</span>
+                <% end %>
+              </span>
             </li>
             <li class="nav-item">
-              <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link' %>
+              <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link  text-dark' %>
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to ' 投稿一覧', posts_path, class: 'fas fa-images nav-link text-dark' %>
+              <span class="nav-link">
+                <%= link_to posts_path do %>
+                  <i class="far fa-images"></i><span class=" text-dark"> 投稿一覧</span>
+                <% end %>
+              </span>
             </li>
             <li class="nav-item">
-              <%= link_to " 新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-dark' %>
+              <%= link_to " 新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to " ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-dark' %>
+              <%= link_to " ログイン", new_user_session_path, class: 'nav-link text-dark' %>
             </li>
             <% end %>
             </ul>
@@ -54,20 +71,15 @@
         </div>
       </nav>
     </header>
-   
-    <main class="mb-5">
+
+    <main class="mt-5 mb-5">
        <%= render "posts/tagbar" %>
       <%= render "layouts/flash" %>
       <%= yield %>
     </main>
-    <footer class="fixed-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="mx-auto">
-            <p>© 2021 Climber</p>
-          </div>
-        </div>
-      </div>
+    
+    <footer class="fixed-bottom text-center">
+      <p class="my-2">© 2021 Climber <i class="fas fa-mountain"></i></p>
     </footer>
   </body>
 </html>

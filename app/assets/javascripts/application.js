@@ -27,7 +27,6 @@ $(document).on('turbolinks:load', function () {
   $("#tag-bar").hide()
   $(".header-search").on('click',function(){
     $('#tag-bar').slideToggle();
-    return false;
   });
   
   $("a").on("click", function() {

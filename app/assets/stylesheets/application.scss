@@ -25,7 +25,11 @@
   color: #6c6b6b;
   font-family: "Hannotate SC";
  }
-
+ 
+ header {
+  background-color: #FFF;
+ }
+ 
  .pagination {
   justify-content: center;
  }
@@ -153,4 +157,14 @@
   font-size: 14px;
   text-align: center;
  }
+}
+
+footer {
+ background-color: #6B7B8E;
+  p {
+   color: #F9F8EB;
+  }
+  i {
+   color: #F9F8EB;
+  }
 }
