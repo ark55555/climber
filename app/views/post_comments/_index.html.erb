@@ -7,7 +7,7 @@
           <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image rounded-circle mr-2", size: "30x30" %>
         </div>
         <div class="comment-text">
-          <%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %><br>
+          <small><%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %></small><br>
           <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %><br>
           <p>
             <small><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
@@ -31,7 +31,7 @@
           <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image rounded-circle mr-2", size: "30x30" %>
         </div>
         <div class="comment-text">
-          <%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %><br>
+          <small><%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %></small><br>
           <%= post_comment.comment %><br>
           <p>
             <small><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>

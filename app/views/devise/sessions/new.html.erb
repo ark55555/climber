@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10  mx-2 mx-sm-auto text-center shadow rounded px-0 my-5">
+    <div class="col-md-6 col-sm-10  mx-2 mx-sm-auto text-center shadow rounded px-0 my-5">
       <h4>ログイン</h4>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <table class="table table-borderless">
@@ -23,7 +23,7 @@
       <% end %>
 
       <div class="mx-auto mt-2">
-        <%= link_to "ゲストログイン(閲覧用)", users_guest_path, method: :post, class: 'fas fa-sign-in-alt btn btn-warning btn-sm' %>
+        <%= link_to "ゲストログイン(閲覧用)", users_guest_path, method: :post, class: 'btn btn-warning btn-sm text-light' %>
       </div>
 
       <div class="my-1 py-2">

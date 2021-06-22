@@ -8,7 +8,7 @@
     <div class="card-text">
       <div class="post-evaluation mb-2" data-score="<%= post.rate %>"></div>
       <div class="d-flex justify-content-between">
-        <div class="">
+        <div class="post-aciton">
           <span id="like-btn-<%= post.id %>"><%= render "likes/like-btn", post: post %></span>
           <span id="bookmark-btn-<%= post.id %>" class="ml-2"><%= render "bookmarks/bookmark-btn", post: post %></span>
           <span class="fas fa-comment ml-2"><%= post.post_comments.count %></span><br>
