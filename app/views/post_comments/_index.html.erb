@@ -4,7 +4,7 @@
     <li class="pt-1 border-bottom">
       <div class="d-flex">
         <div class="mr-2 mt-3">
-          <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image rounded-circle mr-2", size: "30x30" %>
+          <%= attachment_image_tag post_comment.user, :profile_image, fallback: "user.png", class:"comment-image rounded-circle mr-2", size: "30x30" %>
         </div>
         <div class="comment-text">
           <small><%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %></small><br>
@@ -28,7 +28,7 @@
     <li class="pt-1 border-bottom">
       <div class="d-flex">
         <div class="mr-2 mt-3">
-          <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image rounded-circle mr-2", size: "30x30" %>
+          <%= attachment_image_tag post_comment.user, :profile_image, fallback: "user.png", class:"comment-image rounded-circle mr-2", size: "30x30" %>
         </div>
         <div class="comment-text">
           <small><%= link_to "@#{post_comment.user.name}", user_path(post_comment.user) %></small><br>

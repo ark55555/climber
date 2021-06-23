@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :check_guest, only: [:update, :destroy]
+  before_action :admin_user, only: [:index]
+
+  
+  # 管理者用
+  def index
+    @users = User.all.page(params[:page]).per(8)
+  end
 
   def show
     @user = User.find(params[:id])

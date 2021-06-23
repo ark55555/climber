@@ -4,4 +4,6 @@
   <% else %>
     <%= link_to post.bookmarks.count, post_bookmarks_path(post), method: :post, class: "far fa-bookmark bm_black", remote: true %>
   <% end %>
+<% else %>
+  <%= link_to post.bookmarks.count, post_path(post), class: "far fa-bookmark bm_black" %>
 <% end %>

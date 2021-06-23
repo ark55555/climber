@@ -4,4 +4,6 @@
   <% else %>
     <%= link_to post.likes.count, post_likes_path(post), method: :post, remote: true, class: "far fa-heart heart_black" %>
   <% end %>
+<% else %>
+  <%= link_to post.likes.count, post_path(post), class: "far fa-heart heart_black" %>
 <% end %>
