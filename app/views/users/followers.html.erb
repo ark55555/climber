@@ -12,4 +12,11 @@
       <% end %>
     </div>
   <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  <div class="back my-2 text-center">
+    <small>
+      <%= link_to user_path(@user) do %>
+        <i class="fas fa-undo"></i><%= @user.name %>さんのページ戻る
+      <% end %>
+    </small>
+  </div>
 </div>

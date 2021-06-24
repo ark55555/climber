@@ -18,21 +18,78 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+// ページ全体 -----------
  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: #6c6b6b;
-  font-family: "Hannotate SC";
+  font-family: "Hannotate SC", "ヒラギノ丸ゴ ProN", "sans-serif";
  }
  
- header {
-  background-color: #FFF;
- }
+ h4{
+  text-align: center;
+  width: 50%;
+  margin: 20px auto;
+  line-height: 1;
+  background: #F5E6CA;
+  box-shadow: 0px 0px 0px 5px #F5E6CA;
+  border: dashed 1px #D8B384;
+  padding: 0.2em 0.5em;
+  color: #5E454B;
+   strong {
+    color: #5E454B;
+   }
+ } 
  
  .pagination {
   justify-content: center;
  }
+ 
+ #error_explanation {
+  color:#262626;
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
+   ul {
+    list-style: none;
+   }
+ }
+ 
+ .alert-notice{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+ }
+ 
+ .alert-alert{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+ }
+ 
+ .alert-danger {
+   ul {
+    list-style: none;
+   }
+ }
+ 
+ .back{
+  a{
+   color: #6c6b6b;
+  }
+  a:hover{
+   color: #000;
+   transition: 0.5s;
+  }
+ }
+ 
+ // ヘッダー -----
+ header {
+  background-color: #FFF;
+ }
+ 
 
  .page-link {
   background-color: #D9D4CF;
@@ -43,6 +100,8 @@
   background-color: #ABD0CE;
   border-color: #ABD0CE;
  }
+ 
+ // TOPページ　-----
 
  .top-bg {
   height: 40vh;
@@ -66,76 +125,14 @@
   padding: 160px 0 60px 0;
  }
 
- h4{
-  text-align: center;
-  width: 50%;
-  margin: 20px auto;
-  line-height: 1;
-  background: #F5E6CA;
-  box-shadow: 0px 0px 0px 5px #F5E6CA;
-  border: dashed 1px #D8B384;
-  padding: 0.2em 0.5em;
-  font-family: "Hannotate SC";
-  color: #5E454B;
- }
 
- #error_explanation {
-  color:#262626;
-  background:#FFEBE8;
-  text-align: center;
-  border:2px solid #990000;
-  padding:12px; font-weight:850;
-   ul {
-    list-style: none;
-   }
- }
-
- .alert-notice{
-  color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-}
-
-.alert-alert{
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-
-.back{
-  a{
-    color: #6c6b6b;
-  }
-  a:hover{
-    color: #000;
-    transition: 0.5s;
-  }
-}
-
+// 投稿詳細ページ -----
 .edit-btn {
  color: #84B1ED;
 }
 
 .destroy-btn {
  color: #6E7783;
-}
-
-.tag-search{
-	line-height: 1;
- border: 1px solid #7C7877;
- color: #7C7877;
- display: inline-block;
- font-size: 15px;
- background-color: #D9D4CF;
- font-weight: 700;
- font-family: "Hannotate SC";
-}
-
-.tag-search:hover{
-  background-color: #ABD0CE;
-  color: #fff;
-  opacity: 0.6;
-  transition: 0.5;
 }
 
 .post-detail {
@@ -158,6 +155,36 @@
   text-align: center;
  }
 }
+
+.post_user {
+ width: 15%;
+ height: 30%;
+ border-bottom: solid 2px #D8B384;
+ font-size: 14px;
+ text-align: center;
+}
+
+// タグ検索 -----
+
+.tag-search{
+ line-height: 1;
+ border: 1px solid #7C7877;
+ color: #7C7877;
+ display: inline-block;
+ font-size: 15px;
+ background-color: #D9D4CF;
+ font-weight: 700;
+ font-family: "Hannotate SC";
+}
+
+.tag-search:hover{
+  background-color: #ABD0CE;
+  color: #fff;
+  opacity: 0.6;
+  transition: 0.5;
+}
+
+// フッター　-----
 
 footer {
  background-color: #6B7B8E;
