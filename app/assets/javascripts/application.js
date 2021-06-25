@@ -23,11 +23,13 @@
 //= require_tree .
 
 
-$(document).on('turbolinks:load', function () {
+$(document).on('turbolinks:load',
+function () {
   $("#tag-bar").hide()
   $(".header-search").on('click',function(){
     $('#tag-bar').slideToggle();
   });
+ 
   
   $("a").on("click", function() {
     $("#tag-bar").hide()

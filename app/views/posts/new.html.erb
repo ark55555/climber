@@ -1,11 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 mx-2 text-center shadow px-0 my-5">
+  <div class="row justify-content-center">
+    <div class="col-auto mx-2 shadow px-0 my-5 text-center">
       <h4>投稿フォーム</h4>
       <%= render 'layouts/errors', resource: @post %>
-
       <%= form_with model: @post, local: true do |f| %>
-
+      <div class="table-responsive">
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -13,7 +12,7 @@
               <td><%= f.attachment_field :image %></td>
             </tr>
             <tr>
-              <td>商品名</td>
+              <td>商品名<br>(必須)</td>
               <td><%= f.text_field :goods_name, placeholder: "商品名", size: "40" %></td>
             </tr>
             <tr>
@@ -27,7 +26,7 @@
               <td><div class="evaluate_stars"></div></td>
             </tr>
             <tr>
-              <td>説明文</td>
+              <td>説明文<br>(必須)</td>
               <td><%= f.text_area :caption, placeholder: "使用した感想やおすすめポイント等、ご記入ください", size: "80x5" %></td>
             </tr>
           </tbody>
@@ -36,6 +35,7 @@
         <div class="actions my-2">
           <%= f.submit "投稿", class: "btn btn-secondary btn-sm" %>
         </div>
+      </div>
       <% end %>
       <script>
         $('.evaluate_stars').raty({

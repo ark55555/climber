@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 mx-2 text-center shadow px-0 my-5">
+  <div class="row justify-content-center">
+    <div class="col-auto mx-2 text-center shadow px-0 my-5">
       <h4>投稿編集ページ</h4>
       <%= render 'layouts/errors', resource: @post %>
       <%= form_with model: @post, local:true do |f| %>
-
-        <table class="table table-borderless">
+      <div class="table-responsive">
+        <table class="table table-borderless table-responsive">
           <tbody>
             <tr>
               <td>画像</td>
@@ -16,19 +16,19 @@
             </tr>
 
             <tr>
-              <td>商品名</td>
-              <td><%= f.text_field :goods_name, placeholder: "商品名" %></td>
+              <td>商品名<br>(必須)</td>
+              <td><%= f.text_field :goods_name, placeholder: "商品名", size: "40" %></td>
             </tr>
             <tr>
               <td>タグ</td>
-              <td><%= f.text_field :tags, value: @post_tags, placeholder: "カンマ(,)で区切り入力してください" %></td>
+              <td><%= f.text_field :tags, value: @post_tags, placeholder: "カンマ(,)で区切り入力してください", size: "40" %></td>
             </tr>
             <tr>
               <td>おすすめ度</td>
               <td><div class="evaluate_stars" data-score=<%=@post.rate%>></div></td>
             </tr>
             <tr>
-              <td>説明文</td>
+              <td>説明文<br>(必須)</td>
               <td><%= f.text_area :caption, placeholder: "使用した感想やおすすめポイント等、ご記入ください", size: "80x5" %></td>
             </tr>
           </tbody>
@@ -37,6 +37,7 @@
         <div class="actions my-2">
           <%= f.submit "編集", class: "btn btn-secondary btn-sm" %>
         </div>
+      </div>
       <% end %>
       <div class="back my-2 mx-auto">
         <small><%= link_to "投稿ページに戻る", post_path(@post), class: "fas fa-undo" %></small>
