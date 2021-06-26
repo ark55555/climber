@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card shadow mb-3">
     <div class="row g-0">
-      <div class="col-md-5">
+      <div class="col-lg-5 lgcol-md-6">
         <div class="post-image shadow text-center">
           <%= attachment_image_tag @post, :image, fallback: "no_image_goods.png", size: "400x300" %>
         </div>
@@ -22,8 +22,8 @@
           <div class="my-auto"><%= link_to "#{@user.name}", user_path(@user) %></div>
         </div>
       </div>
-      <div class="col-md-7">
-        <h5 class="bg-light text-center my-2 p-1 mx-3"><%= @post.goods_name %></h5>
+      <div class="col-lg-6 offset-lg-1 col-md-6 mx-2">
+        <h5 class="bg-light text-center my-2 p-1"><%= @post.goods_name %></h5>
         <div>
           <span>タグ：</span>
           <% @post_tags.each do |tag| %>
@@ -33,7 +33,10 @@
             </span>
           <% end %>
         </div>
-        <div class="post-evaluation" data-score="<%= @post.rate %>"></div>
+        <div>
+          <span>おすすめ度：</span>
+          <span class="post-evaluation" data-score="<%= @post.rate %>"></span>
+        </div>
         <div class="my-2 mx-auto py-2"><%= safe_join(@post.caption.split("\n"),tag(:br)) %></div>
         <div class="comment-box">
           <h6><strong>コメント一覧</strong></h6>
