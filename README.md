@@ -1,11 +1,11 @@
 # Climber
-
+<img width="70%" alt="TOP画面" src="https://user-images.githubusercontent.com/81353374/123506860-4a538b80-d6a1-11eb-87de-c91b379a2fd1.png">
 ## サイト概要
 登山用品の投稿、閲覧ができます。
 <br>下記機能導入により、商品を探しやすいようにしていますので、
 <br>気になっている商品や類似商品を比較し、購入に役立てることができると考えています。
-- 「ワード」や「タグ」検索機能
-- フォロー機能
+- 「タグ」検索機能
+- お気に入り登録機能
 
 ### サイトテーマ
 自分が使用している登山用品の投稿をして紹介し合うSNSのサイトです。
@@ -25,11 +25,7 @@
 
 ## 設計書
 - ER図
-<img width="70%" alt="ER図" src="https://user-images.githubusercontent.com/81353374/120570434-1941bb80-c453-11eb-8b78-2218de8b3edf.png">
-
-
-- 詳細設計書（作成途中）
-
+<img width="70%" alt="ER図" src="https://user-images.githubusercontent.com/81353374/123507428-3e1cfd80-d6a4-11eb-8857-be41d265df35.png">
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1sPBm6p_3XGsEttP31yN92hQjXXCduvIC0XAGcxdSUg8/edit#gid=0
@@ -41,4 +37,5 @@ https://docs.google.com/spreadsheets/d/1sPBm6p_3XGsEttP31yN92hQjXXCduvIC0XAGcxdS
 - IDE：Cloud9
 
 ## 使用素材
-- 未決定です。（外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。）
+- 写真AC(https://www.photo-ac.com/)
+- FLAT ICON DESIGN(http://flat-icon-design.com/)
