@@ -52,6 +52,7 @@ class PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to post_path(@post), info: "投稿情報更新しました"
     else
+      @post_tags = params[:post][:tags]
       render "edit"
     end
   end

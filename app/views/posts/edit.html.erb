@@ -40,7 +40,11 @@
       </div>
       <% end %>
       <div class="back my-2 mx-auto">
-        <small><%= link_to "投稿ページに戻る", post_path(@post), class: "fas fa-undo" %></small>
+        <small>
+          <%= link_to post_path(@post) do %>
+            <i class="fas fa-undo"></i> 投稿ページに戻る
+          <% end %>
+        </small>
       </div>
       <script>
         $('.evaluate_stars').raty({
