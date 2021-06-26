@@ -1,5 +1,6 @@
 # Climber
-<img width="70%" alt="TOP画面" src="https://user-images.githubusercontent.com/81353374/123506860-4a538b80-d6a1-11eb-87de-c91b379a2fd1.png">
+<img width="1428" alt="TOP画面" src="https://user-images.githubusercontent.com/81353374/123507686-b3d59900-d6a5-11eb-836e-602b618a9cf8.png">
+
 ## サイト概要
 登山用品の投稿、閲覧ができます。
 <br>下記機能導入により、商品を探しやすいようにしていますので、
