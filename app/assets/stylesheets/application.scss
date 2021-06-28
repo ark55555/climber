@@ -23,7 +23,7 @@
   color: #6c6b6b;
   font-family: "Hannotate SC", "ヒラギノ丸ゴ ProN", "sans-serif";
  }
- 
+
  h4{
   text-align: center;
   width: 50%;
@@ -37,12 +37,12 @@
    strong {
     color: #5E454B;
    }
- } 
- 
+ }
+
  .pagination {
   justify-content: center;
  }
- 
+
  #error_explanation {
   color:#262626;
   background:#FFEBE8;
@@ -53,25 +53,25 @@
     list-style: none;
    }
  }
- 
+
  .alert-notice{
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
  }
- 
+
  .alert-alert{
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
  }
- 
+
  .alert-danger {
    ul {
     list-style: none;
    }
  }
- 
+
  .back{
   a{
    color: #6c6b6b;
@@ -81,12 +81,12 @@
    transition: 0.5s;
   }
  }
- 
+
  // ヘッダー -----
  header {
   background-color: #FFF;
  }
- 
+
 
  .page-link {
   background-color: #D9D4CF;
@@ -97,7 +97,7 @@
   background-color: #ABD0CE;
   border-color: #ABD0CE;
  }
- 
+
  // TOPページ　-----
 
  .top-bg {
@@ -117,7 +117,6 @@
  }
 
  .top-title {
-  text-align: center;
   letter-spacing: 4px;
   padding: 160px 0 60px 0;
  }
@@ -192,3 +191,11 @@ footer {
    color: #F9F8EB;
   }
 }
+
+@media screen and (max-width: 425px) {
+ .top-title {
+  letter-spacing: 2px;
+  padding: 120px 0 30px 0;
+ }
+}
+
