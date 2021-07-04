@@ -5,9 +5,9 @@ module PostCommentsHelper
       ""
     elsif score >= 0.5
       content_tag(:i, "", class: "far fa-grin-hearts")
-    elsif score <= 0.4 && score >= 0.0
+    elsif score < 0.5 && score >= 0
       content_tag(:i, "", class: "far fa-smile")
-    elsif score <= -0.1 && score >= -0.5
+    elsif score < 0 && score >= -0.5
       content_tag(:i, "", class: "far fa-frown")
     else
       content_tag(:i, "", class: "far fa-dizzy")
