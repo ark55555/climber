@@ -1,5 +1,5 @@
 <div class="container">
-  <h4><strong><%= "”#{@tag.tag_name}”" %></strong>に関する投稿</h4>
+  <h4><strong><%= "”#{@keyword}”" %></strong>に関する投稿</h4>
   <div class="row row-cols-1 row-cols-md-3">
     <% @posts.each do |post| %>
       <%= render "index", post: post %>

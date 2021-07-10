@@ -23,8 +23,9 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     resource :bookmarks, only: [:create, :destroy]
     get :bookmarks, on: :collection
+    get :post_search, on: :collection
   end
-  
+
   resources :tags do
     get 'posts', to: 'posts#search'
   end

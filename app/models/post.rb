@@ -51,6 +51,10 @@ class Post < ApplicationRecord
       self.tags << post_tag
     end
   end
-
+  
+  # キーワード
+  def self.post_search(keyword)
+    Post.where(['goods_name LIKE ? OR caption LIKE ?', "%#{keyword}%", "%#{keyword}%"])
+  end
 
 end
