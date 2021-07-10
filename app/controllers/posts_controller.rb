@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     redirect_to posts_path, secondary: "投稿を削除しました"
   end
   
-  def search
+  def tag_search
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all.order("created_at DESC").page(params[:page]).per(6)
   end
