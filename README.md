@@ -6,6 +6,7 @@
 <br>下記機能導入により、商品を探しやすいようにしていますので、
 <br>気になっている商品や類似商品を比較し、購入に役立てることができると考えています。
 - 「タグ」検索機能
+- 「ワード」検索機能（投稿）
 - お気に入り登録機能
 
 ### サイトテーマ
@@ -28,7 +29,20 @@
 - ER図
 <img width="70%" alt="ER図" src="https://user-images.githubusercontent.com/81353374/123507428-3e1cfd80-d6a4-11eb-8857-be41d265df35.png">
 
-## チャレンジ要素一覧
+## 機能一覧
+- ユーザー機能（Gem:devise)
+- 投稿機能
+  - 画像投稿（Gem:refile)
+  - タグ付け機能
+  - 評価機能（raty.js）
+- いいね機能（Ajax）
+- コメント機能（Ajax）
+- お気に入り登録機能（Ajax）
+- フォロー機能（Ajax）
+- ページング機能（Gem: kaminari）
+- 検索機能（タグ検索・ワード検索）
+
+### チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1sPBm6p_3XGsEttP31yN92hQjXXCduvIC0XAGcxdSUg8/edit#gid=0
 
 ## 開発環境
