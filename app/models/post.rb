@@ -12,11 +12,14 @@ class Post < ApplicationRecord
   # バリデーション----
   validates :goods_name, presence: true
 	validates :caption, presence: true, length: {maximum: 500}
+	
 
+  # 　いいねしているか判断
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
 
+  # ブックマークしているか判断
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end
@@ -26,11 +29,12 @@ class Post < ApplicationRecord
     bookmarks.create(user_id: user.id)
   end
 
-  # 現在ログインしているユーザーidを受け取り、記事のストックを解除する
+  # 現在ログインしているユーザーidを受け取り、記事のストックを外す
   def unbookmark(user)
     bookmarks.find_by(user_id: user.id).destroy
   end
 
+  # タグを作成
   def save_tag(tags)
       current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
       old_tags = current_tags - tags

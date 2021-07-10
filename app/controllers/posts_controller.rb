@@ -32,7 +32,6 @@ class PostsController < ApplicationController
   end
 
   def search
-    @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all.order("created_at DESC").page(params[:page]).per(6)
   end
