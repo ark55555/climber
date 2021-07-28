@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_posts, through: :bookmarks, source: :post
 
   #フォローする
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy

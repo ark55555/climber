@@ -17,16 +17,16 @@
         <div class="d-flex justify-content-start">
           <h6 class="ml-2 post_user">投稿者</h6>
           <div class="m-2">
-            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "user.png", size: "70x70", class: "rounded-circle flex-shrink-0 me-3" %>
+            <%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "user.png", size: "70x70", class: "rounded-circle flex-shrink-0 me-3" %>
           </div>
-          <div class="my-auto"><%= link_to "#{@user.name}", user_path(@user) %></div>
+          <div class="my-auto"><%= link_to "#{@post.user.name}", user_path(@post.user) %></div>
         </div>
       </div>
       <div class="col-lg-6 offset-lg-1 col-md-6 mx-2">
         <h5 class="bg-light text-center my-2 p-1"><%= @post.goods_name %></h5>
         <div>
           <span>タグ：</span>
-          <% @post_tags.each do |tag| %>
+          <% @post.tags.each do |tag| %>
             <span>
               <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
               <%= "(#{tag.posts.count})" %>
@@ -40,7 +40,7 @@
         <div class="my-2 mx-auto py-2"><%= safe_join(@post.caption.split("\n"),tag(:br)) %></div>
         <div class="comment-box">
           <h6><strong>コメント一覧</strong></h6>
-          <ul id="comments-area" class="list-inline"><%= render "post_comments/index", post_comments: @post_comments %></ul>
+          <ul id="comments-area" class="list-inline"><%= render "post_comments/index", post_comments: @post.post_comments %></ul>
         </div>
         <div class="comment-box">
           <% if user_signed_in? %>

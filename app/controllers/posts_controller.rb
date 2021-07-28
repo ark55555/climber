@@ -25,15 +25,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = @post.user
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments
-    @post_tags = @post.tags
   end
 
   def bookmarks
-    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @bookmark_list = Post.find(bookmarks)
+    @bookmark_list = current_user.bookmarked_posts
   end
 
   def edit
@@ -55,12 +51,12 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path, secondary: "投稿を削除しました"
   end
-  
+
   def tag_search
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all.order("created_at DESC").page(params[:page]).per(6)
   end
-  
+
   def post_search
     @posts = Post.post_search(params[:keyword]).order("created_at DESC").page(params[:page]).per(6)
     @keyword = params[:keyword]
