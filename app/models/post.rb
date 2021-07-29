@@ -12,7 +12,9 @@ class Post < ApplicationRecord
   # バリデーション----
   validates :goods_name, presence: true
 	validates :caption, presence: true, length: {maximum: 500}
-	
+
+  # 降順に表示
+	scope :recent, -> { order("created_at DESC") }
 
   # 　いいねしているか判断
   def liked_by?(user)
@@ -51,7 +53,7 @@ class Post < ApplicationRecord
       self.tags << post_tag
     end
   end
-  
+
   # キーワード
   def self.post_search(keyword)
     Post.where(['goods_name LIKE ? OR caption LIKE ?', "%#{keyword}%", "%#{keyword}%"])

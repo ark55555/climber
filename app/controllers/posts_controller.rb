@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order("created_at DESC").page(params[:page]).per(6)
+    @posts = Post.all.recent.page(params[:page]).per(6)
     @tag_list = Tag.all
   end
 
@@ -54,11 +54,11 @@ class PostsController < ApplicationController
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.all.order("created_at DESC").page(params[:page]).per(6)
+    @posts = @tag.posts.all.recent.page(params[:page]).per(6)
   end
 
   def post_search
-    @posts = Post.post_search(params[:keyword]).order("created_at DESC").page(params[:page]).per(6)
+    @posts = Post.post_search(params[:keyword]).recent.page(params[:page]).per(6)
     @keyword = params[:keyword]
   end
 
